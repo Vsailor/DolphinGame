@@ -1,9 +1,16 @@
 fileFormatVersion: 2
 guid: 75d4a596172ee054894a58b7bc21853a
-timeCreated: 1435055558
+timeCreated: 1435150078
 licenseType: Pro
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Dolphin_0
+    21300002: Dolphin_1
+    21300004: Dolphin_2
+    21300006: Dolphin_3
+    21300008: Dolphin_4
+    21300010: Dolphin_5
+    21300012: Dolphin_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -37,7 +44,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -48,7 +55,77 @@ TextureImporter:
   textureType: 5
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Dolphin_0
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 67
+        width: 327
+        height: 218
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dolphin_1
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 37
+        width: 301
+        height: 243
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dolphin_2
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 25
+        width: 266
+        height: 251
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dolphin_3
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 130
+        width: 390
+        height: 157
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dolphin_4
+      rect:
+        serializedVersion: 2
+        x: 1695
+        y: 105
+        width: 380
+        height: 180
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dolphin_5
+      rect:
+        serializedVersion: 2
+        x: 2165
+        y: 164
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dolphin_6
+      rect:
+        serializedVersion: 2
+        x: 2177
+        y: 128
+        width: 388
+        height: 159
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 
