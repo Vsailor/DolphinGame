@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class SkyScript : MonoBehaviour {
-    public Dolphin DolphinObject;
+    public GameObject DolphinObject;
     public float y = 0;
 	// Use this for initialization
 	void Start () {

@@ -18,28 +18,35 @@ public class DolphinScript : MonoBehaviour {
     }
     void OnCollisionStay2D(Collision2D collision)
     {
+        if (Spead < MinSpead)
+        {
+            Spead = MinSpead;
+        }
         if (Input.GetKey(KeyCode.Space))
         {
             if (LastPosition.y > this.transform.position.y)
             {
-                Spead += 1.2f;
+                Spead += 1.4f;
             }
             else
             {
-                if (Spead >= MinSpead)
+                if (Spead-0.4f >= MinSpead)
                 {
-                    Spead -= 0.6f;
+                    Spead -= 0.4f;
                 }
             }
             return;
         }
         if (LastPosition.y < this.transform.position.y)
         {
-            if (Spead >= MinSpead)
+            if (Spead - 0.6f >= MinSpead)
             {
-                Spead -= 0.3f;
+                Spead -= 0.6f;
             }
+            return;
         }
+
+        
     }
 
     void CheckRotation()

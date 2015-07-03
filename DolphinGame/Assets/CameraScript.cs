@@ -10,16 +10,21 @@ public class CameraScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
         this.transform.position = new Vector3(Dolphin.transform.position.x + 7f, this.transform.position.y, this.transform.position.z);
         if (Dolphin.transform.position.y > this.transform.position.y)
         {
             Camera.main.orthographicSize += Dolphin.transform.position.y - this.transform.position.y;
             this.transform.position = new Vector3(this.transform.position.x, Dolphin.transform.position.y, this.transform.position.z);
         }
-        else if (Dolphin.transform.position.y < this.transform.position.y && Camera.main.orthographicSize >10)
+        else if (Dolphin.transform.position.y < this.transform.position.y && Camera.main.orthographicSize >12)
         {
             Camera.main.orthographicSize -= this.transform.position.y - Dolphin.transform.position.y;
             this.transform.position = new Vector3(this.transform.position.x, Dolphin.transform.position.y, this.transform.position.z);
+        }
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
 }
