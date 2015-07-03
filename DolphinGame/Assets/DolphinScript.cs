@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Dolphin : MonoBehaviour {
+public class DolphinScript : MonoBehaviour {
+
     public float Spead = 4f;
     public float StandartGravity = 3.5f;
     public float CurrentGravity = 4f;
     public float MinSpead;
-    private Vector2 LastPosition;
+    public Vector2 LastPosition;
     Quaternion save;
 
     // Use this for initialization
@@ -61,8 +62,9 @@ public class Dolphin : MonoBehaviour {
     {
         CurrentGravity += 0.07f;
     }
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         CheckRotation();
         if (Input.GetKey(KeyCode.Space))
         {
