@@ -24,7 +24,7 @@ public class DolphinScript : MonoBehaviour
             Spead = MinSpead;
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             if (LastPosition.y > this.transform.position.y)
             {
@@ -88,7 +88,7 @@ public class DolphinScript : MonoBehaviour
     void Update()
     {
         CheckRotation();
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             MoveDown();
         }
