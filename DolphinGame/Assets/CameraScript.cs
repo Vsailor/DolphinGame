@@ -17,7 +17,7 @@ public class CameraScript : MonoBehaviour {
             Camera.main.orthographicSize += Dolphin.transform.position.y - this.transform.position.y;
             this.transform.position = new Vector3(this.transform.position.x, Dolphin.transform.position.y, this.transform.position.z);
         }
-        else if (Dolphin.transform.position.y < this.transform.position.y && Camera.main.orthographicSize >12)
+        else if (Dolphin.transform.position.y < this.transform.position.y && Camera.main.orthographicSize >8.56)
         {
             Camera.main.orthographicSize -= this.transform.position.y - Dolphin.transform.position.y;
             this.transform.position = new Vector3(this.transform.position.x, Dolphin.transform.position.y, this.transform.position.z);

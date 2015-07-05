@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DolphinScript : MonoBehaviour
 {
-
+    private KeyCode Touch = KeyCode.Mouse0;
     public float Spead = 4f;
     public float StandartGravity = 3.5f;
     public float CurrentGravity = 4f;
@@ -24,7 +24,7 @@ public class DolphinScript : MonoBehaviour
             Spead = MinSpead;
         }
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(Touch))
         {
             if (LastPosition.y > this.transform.position.y)
             {
@@ -88,7 +88,7 @@ public class DolphinScript : MonoBehaviour
     void Update()
     {
         CheckRotation();
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(Touch))
         {
             MoveDown();
         }
