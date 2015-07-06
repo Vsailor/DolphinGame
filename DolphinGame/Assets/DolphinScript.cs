@@ -56,11 +56,14 @@ public class DolphinScript : MonoBehaviour
 
         var controller = GetComponent<Rigidbody2D>();
         controller.velocity = new Vector2(Spead, controller.velocity.y);
+        if (!Input.GetKey(Touch))
+        {
+            if (this.transform.position.y < LastPosition.y)
+            {
 
-
-
-
-
+                this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z + 0.02f, this.transform.rotation.w);
+            }
+        }
 
         if (Mathf.Abs(this.transform.rotation.z) > 0.3)
         {
