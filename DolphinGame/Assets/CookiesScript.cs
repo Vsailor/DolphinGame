@@ -1,24 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CookiesScript : MonoBehaviour {
+public class CookiesScript : MonoBehaviour
+{
+    public string TriggerAnimation;
     private Animator AnimatorComponent;
-	// Use this for initialization
-	void Start () {
+    public const int COOKIES1_AMOUNT = 19;
+    public const int COOKIES2_AMOUNT = 22;
+    public const int COOKIES3_AMOUNT = 23;
+    public const int COOKIES4_AMOUNT = 16;
+    // Use this for initialization
+    void Start()
+    {
         AnimatorComponent = GetComponent<Animator>();
-        //AnimatorComponent.Play("Finish");
-        AnimatorComponent.enabled = false;
+        TriggerAnimation = "GemsAnimation";
+        AnimatorComponent.Play("StartGems");
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        AnimatorComponent.enabled = true;
-        AnimatorComponent.Play("GemsAnimation");
+        
+        AnimatorComponent.Play(TriggerAnimation);
     }
-    void OnTriggerExit2D(Collider2D collision)
+    //void OnTriggerExit2D(Collider2D collision)
+    //{
+    //}
+    // Update is called once per frame
+    void Update()
     {
-        //AnimatorComponent.Play("Start");
+
     }
-	// Update is called once per frame
-	void Update () {
-	}
 }

@@ -10,6 +10,7 @@ public class DolphinScript : MonoBehaviour
     public float MinSpead;
     public Vector2 LastPosition;
     Quaternion LastRotation;
+    bool Inited = false;
 
     // Use this for initialization
     void Start()
@@ -73,11 +74,85 @@ public class DolphinScript : MonoBehaviour
         LastRotation = this.transform.rotation;
 
     }
+    void GenerateCookies()
+    {
+        GameObject obj;
+        Animator comp;
+        System.Random rand = new System.Random();
+        var random = rand.Next(0,2);
+        for (int i = 0; i < CookiesScript.COOKIES1_AMOUNT; i++)
+        {
+            obj = GameObject.Find("Cookies1 " + i);
+            comp = obj.GetComponent<Animator>();
+            if (random == 0)
+            {
+                comp.Play("StartGems");
+                obj.GetComponent<CookiesScript>().TriggerAnimation = "GemsAnimation";
+            }
+            else
+            {
+                comp.Play("StartStars");
+                obj.GetComponent<CookiesScript>().TriggerAnimation = "StarsAnimation";                
+            }
+        }
+
+        random = rand.Next(0, 2);
+        for (int i = 0; i < CookiesScript.COOKIES2_AMOUNT; i++)
+        {
+            obj = GameObject.Find("Cookies2 " + i);
+            comp = obj.GetComponent<Animator>();
+            if (random == 0)
+            {
+                comp.Play("StartGems");
+                obj.GetComponent<CookiesScript>().TriggerAnimation = "GemsAnimation";
+            }
+            else
+            {
+                comp.Play("StartStars");
+                obj.GetComponent<CookiesScript>().TriggerAnimation = "StarsAnimation";
+            }
+        }
+
+        random = rand.Next(0, 2);
+        for (int i = 0; i < CookiesScript.COOKIES3_AMOUNT; i++)
+        {
+            obj = GameObject.Find("Cookies3 " + i);
+            comp = obj.GetComponent<Animator>();
+            if (random == 0)
+            {
+                comp.Play("StartGems");
+                obj.GetComponent<CookiesScript>().TriggerAnimation = "GemsAnimation";
+            }
+            else
+            {
+                comp.Play("StartStars");
+                obj.GetComponent<CookiesScript>().TriggerAnimation = "StarsAnimation";
+            }
+        }
+
+        random = rand.Next(0, 2);
+        for (int i = 0; i < CookiesScript.COOKIES4_AMOUNT; i++)
+        {
+            obj = GameObject.Find("Cookies4 " + i);
+            comp = obj.GetComponent<Animator>();
+            if (random == 0)
+            {
+                comp.Play("StartGems");
+                obj.GetComponent<CookiesScript>().TriggerAnimation = "GemsAnimation";
+            }
+            else
+            {
+                comp.Play("StartStars");
+                obj.GetComponent<CookiesScript>().TriggerAnimation = "StarsAnimation";
+            }
+        }
+    }
     void Teleport()
     {
-        if (this.transform.position.x >= 10.3f)
+        if (this.transform.position.x >= 39f)
         {
-            this.transform.position = new Vector3(-181.36f, this.transform.position.y, this.transform.position.z);
+            this.transform.position = new Vector3(-345f, this.transform.position.y, this.transform.position.z);
+            GenerateCookies();
         }
     }
 
@@ -87,9 +162,19 @@ public class DolphinScript : MonoBehaviour
         this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z + 0.02f, this.transform.rotation.w);
 
     }
+    void Init()
+    {
+        GenerateCookies();
+    }
     // Update is called once per frame
     void Update()
     {
+        if (!Inited)
+        {
+            Inited = true;
+            Init();
+        }
+        Teleport();
         CheckRotation();
         if (Input.GetKey(Touch))
         {
@@ -97,7 +182,7 @@ public class DolphinScript : MonoBehaviour
         }
         else
         {
-            if (LastPosition.y < this.transform.position.y && Mathf.Abs(this.transform.rotation.z - 0.08f)<=0.3)
+            if (LastPosition.y < this.transform.position.y && Mathf.Abs(this.transform.rotation.z - 0.08f) <= 0.3)
             {
                 this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z - 0.08f, this.transform.rotation.w);
             }
@@ -108,6 +193,6 @@ public class DolphinScript : MonoBehaviour
         GetComponent<Rigidbody2D>().gravityScale = CurrentGravity;
 
         LastPosition = this.transform.position;
-        Teleport();
+
     }
 }

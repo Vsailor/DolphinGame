@@ -1,9 +1,16 @@
 fileFormatVersion: 2
 guid: ed603cedb307b6b4d914a223d986da8e
-timeCreated: 1435055559
+timeCreated: 1436208760
 licenseType: Pro
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Star1
+    21300002: Star2
+    21300004: Star3
+    21300006: Star4
+    21300008: Star7
+    21300010: Star5
+    21300012: Star6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,14 +37,14 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -45,10 +52,80 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
-  textureType: 8
+  textureType: 5
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Star1
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 36
+        width: 184
+        height: 186
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Star2
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 25
+        width: 202
+        height: 204
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Star3
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 25
+        width: 202
+        height: 204
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Star4
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 22
+        width: 202
+        height: 207
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Star7
+      rect:
+        serializedVersion: 2
+        x: 2004
+        y: 0
+        width: 297
+        height: 258
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Star5
+      rect:
+        serializedVersion: 2
+        x: 1271
+        y: 7
+        width: 268
+        height: 246
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Star6
+      rect:
+        serializedVersion: 2
+        x: 1628
+        y: 0
+        width: 296
+        height: 258
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 
