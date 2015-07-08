@@ -80,7 +80,7 @@ public class DolphinScript : MonoBehaviour
     {
         GameObject obj;
         Animator comp;
-        var random = Rand.Next(0, 2);
+        var random = Rand.Next(0, 3);
 
         for (int i = 0; i < amount; i++)
         {
@@ -91,10 +91,15 @@ public class DolphinScript : MonoBehaviour
                 comp.Play("StartGems");
                 obj.GetComponent<CookiesScript>().TriggerAnimation = "GemsAnimation";
             }
-            else
+            else if (random == 1)
             {
                 comp.Play("StartStars");
                 obj.GetComponent<CookiesScript>().TriggerAnimation = "StarsAnimation";
+            }
+            else
+            {
+                comp.Play("StartCoins");
+                obj.GetComponent<CookiesScript>().TriggerAnimation = "CoinsAnimation";
             }
         }
 
