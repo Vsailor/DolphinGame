@@ -5,10 +5,21 @@ public class CookiesScript : MonoBehaviour
 {
     public string TriggerAnimation;
     private Animator AnimatorComponent;
-    public const int COOKIES1_AMOUNT = 19;
-    public const int COOKIES2_AMOUNT = 22;
-    public const int COOKIES3_AMOUNT = 23;
-    public const int COOKIES4_AMOUNT = 16;
+    public static int[] CookiesAmount =
+        {
+        19,
+        22,
+        23,
+        16,
+        19,
+        22,
+        16,
+        23,
+        18,
+        18,
+        18,
+        23
+    };
     // Use this for initialization
     void Start()
     {

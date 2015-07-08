@@ -17,6 +17,7 @@ public class DolphinScript : MonoBehaviour
     {
         LastPosition = this.transform.position;
         LastRotation = this.transform.rotation;
+        Rand = new System.Random();
     }
     void OnCollisionStay2D(Collision2D collision)
     {
@@ -74,32 +75,16 @@ public class DolphinScript : MonoBehaviour
         LastRotation = this.transform.rotation;
 
     }
-    void GenerateCookies()
+    static System.Random Rand;
+    static void GenerateCookie(string name, int amount)
     {
         GameObject obj;
         Animator comp;
-        System.Random rand = new System.Random();
-        var random = rand.Next(0,2);
-        for (int i = 0; i < CookiesScript.COOKIES1_AMOUNT; i++)
-        {
-            obj = GameObject.Find("Cookies1 " + i);
-            comp = obj.GetComponent<Animator>();
-            if (random == 0)
-            {
-                comp.Play("StartGems");
-                obj.GetComponent<CookiesScript>().TriggerAnimation = "GemsAnimation";
-            }
-            else
-            {
-                comp.Play("StartStars");
-                obj.GetComponent<CookiesScript>().TriggerAnimation = "StarsAnimation";                
-            }
-        }
+        var random = Rand.Next(0, 2);
 
-        random = rand.Next(0, 2);
-        for (int i = 0; i < CookiesScript.COOKIES2_AMOUNT; i++)
+        for (int i = 0; i < amount; i++)
         {
-            obj = GameObject.Find("Cookies2 " + i);
+            obj = GameObject.Find(name + " " + i);
             comp = obj.GetComponent<Animator>();
             if (random == 0)
             {
@@ -113,45 +98,21 @@ public class DolphinScript : MonoBehaviour
             }
         }
 
-        random = rand.Next(0, 2);
-        for (int i = 0; i < CookiesScript.COOKIES3_AMOUNT; i++)
-        {
-            obj = GameObject.Find("Cookies3 " + i);
-            comp = obj.GetComponent<Animator>();
-            if (random == 0)
-            {
-                comp.Play("StartGems");
-                obj.GetComponent<CookiesScript>().TriggerAnimation = "GemsAnimation";
-            }
-            else
-            {
-                comp.Play("StartStars");
-                obj.GetComponent<CookiesScript>().TriggerAnimation = "StarsAnimation";
-            }
-        }
 
-        random = rand.Next(0, 2);
-        for (int i = 0; i < CookiesScript.COOKIES4_AMOUNT; i++)
+    }
+    public static void GenerateCookies()
+    {
+        for (int i = 0; i < CookiesScript.CookiesAmount.Length; i++)
         {
-            obj = GameObject.Find("Cookies4 " + i);
-            comp = obj.GetComponent<Animator>();
-            if (random == 0)
-            {
-                comp.Play("StartGems");
-                obj.GetComponent<CookiesScript>().TriggerAnimation = "GemsAnimation";
-            }
-            else
-            {
-                comp.Play("StartStars");
-                obj.GetComponent<CookiesScript>().TriggerAnimation = "StarsAnimation";
-            }
+            GenerateCookie("Cookies" + (i + 1), CookiesScript.CookiesAmount[i]);
         }
+        
     }
     void Teleport()
-    {
-        if (this.transform.position.x >= 39f)
+    {//-334.31
+        if (this.transform.position.x >= 231.5f)
         {
-            this.transform.position = new Vector3(-345f, this.transform.position.y, this.transform.position.z);
+            this.transform.position = new Vector3(-344.5f, this.transform.position.y, this.transform.position.z);
             GenerateCookies();
         }
     }
