@@ -11,7 +11,7 @@ public class CameraScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-        this.transform.position = new Vector3(Dolphin.transform.position.x + 7f, this.transform.position.y, this.transform.position.z);
+        this.transform.position = new Vector3(Dolphin.transform.position.x + 4, this.transform.position.y, this.transform.position.z);
         if (Dolphin.transform.position.y > this.transform.position.y)
         {
             Camera.main.orthographicSize += Dolphin.transform.position.y - this.transform.position.y;

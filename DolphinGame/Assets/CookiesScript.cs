@@ -3,8 +3,8 @@ using System.Collections;
 
 public class CookiesScript : MonoBehaviour
 {
+   
     public string TriggerAnimation;
-    private Animator AnimatorComponent;
     public static int[] CookiesAmount =
         {
         19,
@@ -20,16 +20,17 @@ public class CookiesScript : MonoBehaviour
         18,
         23
     };
+    private Animator AnimatorComponent;
     // Use this for initialization
     void Start()
     {
         AnimatorComponent = GetComponent<Animator>();
         TriggerAnimation = "GemsAnimation";
         AnimatorComponent.Play("StartGems");
+        GameObject.Find("Dolphin").GetComponent<DolphinScript>();
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
         AnimatorComponent.Play(TriggerAnimation);
     }
     //void OnTriggerExit2D(Collider2D collision)

@@ -31,6 +31,14 @@ public class DolphinScript : MonoBehaviour
             if (LastPosition.y > this.transform.position.y)
             {
                 Spead += 1.4f;
+                if (LastPosition.y < this.transform.position.y)
+                {
+                    if (Spead > 20)
+                    {
+                        Spead -= 5f;
+                        return;
+                    }
+                }
             }
             else
             {
@@ -43,6 +51,12 @@ public class DolphinScript : MonoBehaviour
         }
         if (LastPosition.y < this.transform.position.y)
         {
+            if (Spead > 20)
+            {
+                Spead -= 5f;
+                return;
+            }
+            
             if (Spead - 0.4f >= MinSpead)
             {
                 Spead -= 0.4f;
@@ -111,7 +125,7 @@ public class DolphinScript : MonoBehaviour
         {
             GenerateCookie("Cookies" + (i + 1), CookiesScript.CookiesAmount[i]);
         }
-        
+
     }
     void Teleport()
     {//-334.31
@@ -124,7 +138,10 @@ public class DolphinScript : MonoBehaviour
 
     void MoveDown()
     {
-        CurrentGravity += 0.07f;
+        if (CurrentGravity <= 10f)
+        {
+            CurrentGravity += 0.07f;
+        }
         this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z + 0.02f, this.transform.rotation.w);
 
     }

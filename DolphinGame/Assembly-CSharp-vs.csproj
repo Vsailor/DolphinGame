@@ -48,7 +48,6 @@
   <ItemGroup>
      <Compile Include="Assets\CameraScript.cs" />
      <Compile Include="Assets\CookiesScript.cs" />
-     <Compile Include="Assets\Dolphin.cs" />
      <Compile Include="Assets\DolphinScript.cs" />
      <Compile Include="Assets\SkyScript.cs" />
  <Reference Include="UnityEngine.UI">
