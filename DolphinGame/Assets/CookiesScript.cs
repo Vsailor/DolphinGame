@@ -33,12 +33,4 @@ public class CookiesScript : MonoBehaviour
     {
         AnimatorComponent.Play(TriggerAnimation);
     }
-    //void OnTriggerExit2D(Collider2D collision)
-    //{
-    //}
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

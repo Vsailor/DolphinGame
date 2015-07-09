@@ -3,11 +3,6 @@ using System.Collections;
 
 public class MainButtonScript : MonoBehaviour
 {
-
-    void Start()
-    {
-
-    }
     void OnMouseDown()
     {
         if (this.name == "PlayButton")
@@ -22,9 +17,5 @@ public class MainButtonScript : MonoBehaviour
         {
             Application.Quit();
         }
-    }
-    void Update()
-    {
-
     }
 }

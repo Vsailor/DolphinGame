@@ -51,6 +51,7 @@
      <Compile Include="Assets\DolphinScript.cs" />
      <Compile Include="Assets\MainButtonScript.cs" />
      <Compile Include="Assets\MainCameraScript.cs" />
+     <Compile Include="Assets\PlayScreenQuitButtonScript.cs" />
      <Compile Include="Assets\SkyScript.cs" />
      <Compile Include="Assets\StartScreenScript.cs" />
  <Reference Include="UnityEngine.UI">

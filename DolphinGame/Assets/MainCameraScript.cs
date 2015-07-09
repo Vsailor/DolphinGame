@@ -3,10 +3,6 @@ using System.Collections;
 
 public class MainCameraScript : MonoBehaviour {
     public GameObject Background;
-	// Use this for initialization
-	void Start () {
-
-	}
     void OnGUI()
     {
         var resolution = string.Empty;
@@ -39,8 +35,5 @@ public class MainCameraScript : MonoBehaviour {
             Background.transform.localScale = new Vector3(1.35f, 1.27f, 1f);
         }
     }
-	// Update is called once per frame
-	void Update () {
-        //print(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,Screen.height,0)));
-    }
+
 }
