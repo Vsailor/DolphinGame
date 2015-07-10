@@ -78,6 +78,7 @@ public class DolphinScript : MonoBehaviour
             {
 
                 this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z + 0.02f, this.transform.rotation.w);
+                this.GetComponent<Animator>().Play("DolphinDown");
             }
         }
 
@@ -143,7 +144,7 @@ public class DolphinScript : MonoBehaviour
             CurrentGravity += 0.07f;
         }
         this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z + 0.02f, this.transform.rotation.w);
-
+        this.GetComponent<Animator>().Play("DolphinDown");
     }
     void Init()
     {
@@ -168,9 +169,8 @@ public class DolphinScript : MonoBehaviour
             if (LastPosition.y < this.transform.position.y && Mathf.Abs(this.transform.rotation.z - 0.08f) <= 0.3)
             {
                 this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z - 0.08f, this.transform.rotation.w);
+                this.GetComponent<Animator>().Play("DolphinUp");
             }
-
-            //this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z - 0.1f, this.transform.rotation.w);
             CurrentGravity = StandartGravity;
         }
         GetComponent<Rigidbody2D>().gravityScale = CurrentGravity;
