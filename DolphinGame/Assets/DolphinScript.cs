@@ -3,7 +3,6 @@ using System.Collections;
 
 public class DolphinScript : MonoBehaviour
 {
-    private KeyCode Touch = KeyCode.Mouse0;
     public float Spead = 4f;
     public float StandartGravity = 3.5f;
     public float CurrentGravity = 4f;
@@ -26,7 +25,7 @@ public class DolphinScript : MonoBehaviour
             Spead = MinSpead;
         }
 
-        if (Input.GetKey(Touch))
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0))
         {
             if (LastPosition.y > this.transform.position.y)
             {
@@ -72,7 +71,7 @@ public class DolphinScript : MonoBehaviour
 
         var controller = GetComponent<Rigidbody2D>();
         controller.velocity = new Vector2(Spead, controller.velocity.y);
-        if (!Input.GetKey(Touch))
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0))
         {
             if (this.transform.position.y < LastPosition.y)
             {
@@ -160,7 +159,7 @@ public class DolphinScript : MonoBehaviour
         }
         Teleport();
         CheckRotation();
-        if (Input.GetKey(Touch))
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0))
         {
             MoveDown();
         }

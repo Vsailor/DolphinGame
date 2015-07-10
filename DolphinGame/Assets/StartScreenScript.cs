@@ -6,4 +6,11 @@ public class StartScreenScript : MonoBehaviour {
     {
         Application.LoadLevel("Play");
     }
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Application.LoadLevel("Play");
+        }
+    }
 }

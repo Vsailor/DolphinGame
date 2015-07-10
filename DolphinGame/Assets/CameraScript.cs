@@ -11,8 +11,12 @@ public class CameraScript : MonoBehaviour
     public GameObject Timer;
     public GameObject Score;
     public GameObject Swoosh;
+    public GameObject CoinSound;
     private int MaxTime = 60;
-
+    public void CoinSoundPlay()
+    {
+        CoinSound.GetComponent<AudioSource>().Play();
+    }
     void MoveDisplays()
     {
         if (Dolphin.transform.position.y > this.transform.position.y)

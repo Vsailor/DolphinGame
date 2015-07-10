@@ -27,11 +27,12 @@ public class CookiesScript : MonoBehaviour
         AnimatorComponent = GetComponent<Animator>();
         TriggerAnimation = "GemsAnimation";
         AnimatorComponent.Play("StartGems");
-        GameObject.Find("Dolphin").GetComponent<DolphinScript>();
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
         AnimatorComponent.Play(TriggerAnimation);
-        MainCamera.GetComponent<CameraScript>().ScoreAmount += 5;
+        var component = MainCamera.GetComponent<CameraScript>();
+        component.ScoreAmount += 5;
+        component.CoinSoundPlay();
     }
 }
