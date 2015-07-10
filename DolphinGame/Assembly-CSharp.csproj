@@ -49,6 +49,7 @@
      <Compile Include="Assets\CameraScript.cs" />
      <Compile Include="Assets\CookiesScript.cs" />
      <Compile Include="Assets\DolphinScript.cs" />
+     <Compile Include="Assets\EndSceneScript.cs" />
      <Compile Include="Assets\MainButtonScript.cs" />
      <Compile Include="Assets\MainCameraScript.cs" />
      <Compile Include="Assets\PlayScreenQuitButtonScript.cs" />

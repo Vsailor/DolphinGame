@@ -3,18 +3,14 @@ using System.Collections;
 
 public class CameraScript : MonoBehaviour
 {
+    public int ScoreAmount = 0;
     public GameObject Dolphin;
     public GameObject ScoreDisplay;
     public GameObject TimeDisplay;
     public GameObject QuitButton;
     public GameObject Timer;
+    public GameObject Score;
     private int MaxTime = 60;
-    private float OldOrtographicSize;
-    // Use this for initialization
-    void Start()
-    {
-        OldOrtographicSize = Camera.main.orthographicSize;
-    }
 
     void MoveDisplays()
     {
@@ -46,23 +42,35 @@ QuitButton.transform.localScale.z);
             Camera.main.orthographicSize -= this.transform.position.y - Dolphin.transform.position.y;
             this.transform.position = new Vector3(this.transform.position.x, Dolphin.transform.position.y, this.transform.position.z);
         }
-        ScoreDisplay.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width - 100, Camera.main.pixelHeight - 50, 2));
+        ScoreDisplay.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width - 150, Camera.main.pixelHeight - 50, 2));
         TimeDisplay.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width/2, Camera.main.pixelHeight - 50, 2));
-        QuitButton.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(100, Camera.main.pixelHeight - 50, 2));
+        QuitButton.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(150, Camera.main.pixelHeight - 50, 2));
     }
-    // Update is called once per frame
+    bool LargeJump = false;
     void Update()
     {
         this.transform.position = new Vector3(Dolphin.transform.position.x + 4, this.transform.position.y, this.transform.position.z);
         MoveDisplays();
+
+        if (!LargeJump && Camera.main.orthographicSize >= 15)
+        {
+            ScoreAmount += 30;
+            LargeJump = true;
+        }
+        else
+        {
+            if (Camera.main.orthographicSize < 15)
+            {
+                LargeJump = false;
+            }
+        }
         if (Timer.GetComponent<TextMesh>().text == "0")
         {
+            System.IO.File.WriteAllText(Application.persistentDataPath + @"\Score", ScoreAmount.ToString());
             Application.LoadLevel("EndScreen");
         }
-        Timer.GetComponent<TextMesh>().text = (MaxTime - (int)(Time.time)).ToString();
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+        Timer.GetComponent<TextMesh>().text = (MaxTime - (int)(Time.timeSinceLevelLoad)).ToString();
+        Score.GetComponent<TextMesh>().text = ScoreAmount.ToString();
+
     }
 }

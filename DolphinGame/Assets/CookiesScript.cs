@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CookiesScript : MonoBehaviour
 {
-   
+    public GameObject MainCamera;
     public string TriggerAnimation;
     public static int[] CookiesAmount =
         {
@@ -32,5 +32,6 @@ public class CookiesScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         AnimatorComponent.Play(TriggerAnimation);
+        MainCamera.GetComponent<CameraScript>().ScoreAmount += 5;
     }
 }

@@ -14,7 +14,7 @@ public class MainCameraScript : MonoBehaviour {
         {
             resolution = (Screen.width * 1.0 / Screen.height * 1.0).ToString();
         }
-        if (resolution == "1.70")
+        if (resolution == "1.70" || resolution == "1.7")
         {
             Background.transform.localScale = new Vector3(1.44f, 1.27f, 1f);
         }
@@ -22,15 +22,19 @@ public class MainCameraScript : MonoBehaviour {
         {
             Background.transform.localScale = new Vector3(1.51f, 1.27f, 1f);
         }
+        else if (resolution == "1.77")
+        {
+            Background.transform.localScale = new Vector3(1.51f, 1.27f, 1f);
+        }
         else if (resolution == "1.66")
         {
             Background.transform.localScale = new Vector3(1.41f, 1.27f, 1f);
         }
-        else if (resolution == "1.50")
+        else if (resolution == "1.5" || resolution == "1.50")
         {
             Background.transform.localScale = new Vector3(1.27f, 1.27f, 1f);
         }
-        else if (resolution == "1.60")
+        else if (resolution == "1.60" || resolution == "1.6")
         {
             Background.transform.localScale = new Vector3(1.35f, 1.27f, 1f);
         }
