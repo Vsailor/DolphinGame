@@ -38,6 +38,14 @@ public class MainCameraScript : MonoBehaviour {
         {
             Background.transform.localScale = new Vector3(1.35f, 1.27f, 1f);
         }
+        else if (resolution == "1.25")
+        {
+            Background.transform.localScale = new Vector3(1.06f, 1.27f, 1f);
+        }
+        else if (resolution == "1.33")
+        {
+            Background.transform.localScale = new Vector3(1.13f, 1.27f, 1f);
+        }
     }
 
 }

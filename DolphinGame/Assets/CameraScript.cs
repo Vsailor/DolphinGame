@@ -53,9 +53,20 @@ Swoosh.transform.localScale.z);
             Camera.main.orthographicSize -= this.transform.position.y - Dolphin.transform.position.y;
             this.transform.position = new Vector3(this.transform.position.x, Dolphin.transform.position.y, this.transform.position.z);
         }
-        ScoreDisplay.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width - 150, Camera.main.pixelHeight - 50, 2));
-        TimeDisplay.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width/2, Camera.main.pixelHeight - 50, 2));
-        QuitButton.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(150, Camera.main.pixelHeight - 50, 2));
+        if (Screen.width == 512 && Screen.height == 384)
+        {
+            ScoreDisplay.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width - 100, Camera.main.pixelHeight - 50, 2));
+            TimeDisplay.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Camera.main.pixelHeight - 50, 2));
+            QuitButton.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(100, Camera.main.pixelHeight - 50, 2));
+        }
+        else
+        {
+            ScoreDisplay.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width - 150, Camera.main.pixelHeight - 50, 2));
+            TimeDisplay.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Camera.main.pixelHeight - 50, 2));
+            QuitButton.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(150, Camera.main.pixelHeight - 50, 2));
+
+        }
+
         Swoosh.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, 50, 2));
     }
     bool LargeJump = false;
@@ -66,7 +77,7 @@ Swoosh.transform.localScale.z);
 
         if (!LargeJump && Camera.main.orthographicSize >= 15)
         {
-            ScoreAmount += 30;
+            ScoreAmount += 60;
             LargeJump = true;
             Swoosh.SetActive(true);
         }
