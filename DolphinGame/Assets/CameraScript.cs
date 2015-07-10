@@ -77,7 +77,7 @@ Swoosh.transform.localScale.z);
 
         if (!LargeJump && Camera.main.orthographicSize >= 15)
         {
-            ScoreAmount += 60;
+            ScoreAmount += 100;
             LargeJump = true;
             Swoosh.SetActive(true);
         }

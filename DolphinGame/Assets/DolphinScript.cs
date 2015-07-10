@@ -3,6 +3,8 @@ using System.Collections;
 
 public class DolphinScript : MonoBehaviour
 {
+    private KeyCode Touch = KeyCode.Mouse0;
+    private KeyCode Touch2 = KeyCode.Space;
     public float Spead = 4f;
     public float StandartGravity = 3.5f;
     public float CurrentGravity = 4f;
@@ -25,22 +27,19 @@ public class DolphinScript : MonoBehaviour
             Spead = MinSpead;
         }
 
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(Touch) || Input.GetKey(Touch2))
         {
             if (LastPosition.y > this.transform.position.y)
             {
                 Spead += 1.4f;
-                if (LastPosition.y < this.transform.position.y)
-                {
-                    if (Spead > 20)
-                    {
-                        Spead -= 5f;
-                        return;
-                    }
-                }
             }
             else
             {
+                if (Spead >= 20)
+                {
+                    Spead -= 5f;
+                    return;
+                }
                 if (Spead - 0.4f >= MinSpead)
                 {
                     Spead -= 0.4f;
@@ -50,12 +49,6 @@ public class DolphinScript : MonoBehaviour
         }
         if (LastPosition.y < this.transform.position.y)
         {
-            if (Spead > 20)
-            {
-                Spead -= 5f;
-                return;
-            }
-            
             if (Spead - 0.4f >= MinSpead)
             {
                 Spead -= 0.4f;
@@ -71,14 +64,14 @@ public class DolphinScript : MonoBehaviour
 
         var controller = GetComponent<Rigidbody2D>();
         controller.velocity = new Vector2(Spead, controller.velocity.y);
-        //if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0))
-        //{
-        //    if (this.transform.position.y < LastPosition.y)
-        //    {
+        if (!Input.GetKey(Touch) || Input.GetKey(Touch2))
+        {
+            if (this.transform.position.y < LastPosition.y)
+            {
 
-        //        this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z + 0.02f, this.transform.rotation.w);
-        //    }
-        //}
+                this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z + 0.02f, this.transform.rotation.w);
+            }
+        }
 
         if (Mathf.Abs(this.transform.rotation.z) > 0.3)
         {
@@ -137,11 +130,9 @@ public class DolphinScript : MonoBehaviour
 
     void MoveDown()
     {
-        if (CurrentGravity <= 10f)
-        {
-            CurrentGravity += 0.07f;
-        }
+        CurrentGravity += 0.07f;
         this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z + 0.02f, this.transform.rotation.w);
+
     }
     void Init()
     {
@@ -157,7 +148,7 @@ public class DolphinScript : MonoBehaviour
         }
         Teleport();
         CheckRotation();
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(Touch) || Input.GetKey(Touch2))
         {
             MoveDown();
         }
@@ -167,6 +158,8 @@ public class DolphinScript : MonoBehaviour
             {
                 this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z - 0.08f, this.transform.rotation.w);
             }
+
+            //this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z - 0.1f, this.transform.rotation.w);
             CurrentGravity = StandartGravity;
         }
         GetComponent<Rigidbody2D>().gravityScale = CurrentGravity;
