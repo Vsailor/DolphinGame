@@ -71,15 +71,14 @@ public class DolphinScript : MonoBehaviour
 
         var controller = GetComponent<Rigidbody2D>();
         controller.velocity = new Vector2(Spead, controller.velocity.y);
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0))
-        {
-            if (this.transform.position.y < LastPosition.y)
-            {
+        //if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0))
+        //{
+        //    if (this.transform.position.y < LastPosition.y)
+        //    {
 
-                this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z + 0.02f, this.transform.rotation.w);
-                this.GetComponent<Animator>().Play("DolphinDown");
-            }
-        }
+        //        this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z + 0.02f, this.transform.rotation.w);
+        //    }
+        //}
 
         if (Mathf.Abs(this.transform.rotation.z) > 0.3)
         {
@@ -143,7 +142,6 @@ public class DolphinScript : MonoBehaviour
             CurrentGravity += 0.07f;
         }
         this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z + 0.02f, this.transform.rotation.w);
-        this.GetComponent<Animator>().Play("DolphinDown");
     }
     void Init()
     {
@@ -168,7 +166,6 @@ public class DolphinScript : MonoBehaviour
             if (LastPosition.y < this.transform.position.y && Mathf.Abs(this.transform.rotation.z - 0.08f) <= 0.3)
             {
                 this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z - 0.08f, this.transform.rotation.w);
-                this.GetComponent<Animator>().Play("DolphinUp");
             }
             CurrentGravity = StandartGravity;
         }

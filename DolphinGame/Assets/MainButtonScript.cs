@@ -7,7 +7,14 @@ public class MainButtonScript : MonoBehaviour
     {
         if (this.name == "PlayButton")
         {
-            Application.LoadLevel("StartScreen");
+            if (Application.loadedLevelName == "MainMenu")
+            {
+                Application.LoadLevel("StartScreen");
+            }
+            else
+            {
+                Application.LoadLevel("Play");
+            }
         }
         if (this.name == "WriteAReviewButton")
         {

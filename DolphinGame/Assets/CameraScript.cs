@@ -12,7 +12,7 @@ public class CameraScript : MonoBehaviour
     public GameObject Score;
     public GameObject Swoosh;
     public GameObject CoinSound;
-    private int MaxTime = 60;
+    private int MaxTime = 120;
     public void CoinSoundPlay()
     {
         CoinSound.GetComponent<AudioSource>().Play();
