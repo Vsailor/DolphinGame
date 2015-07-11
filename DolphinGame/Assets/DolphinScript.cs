@@ -3,6 +3,7 @@ using System.Collections;
 
 public class DolphinScript : MonoBehaviour
 {
+    public bool IsActive = false;
     private KeyCode Touch = KeyCode.Mouse0;
     private KeyCode Touch2 = KeyCode.Space;
     public float Spead = 4f;
@@ -22,40 +23,42 @@ public class DolphinScript : MonoBehaviour
     }
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (Spead < MinSpead)
+        if (IsActive)
         {
-            Spead = MinSpead;
-        }
-
-        if (Input.GetKey(Touch) || Input.GetKey(Touch2))
-        {
-            if (LastPosition.y > this.transform.position.y)
+            if (Spead < MinSpead)
             {
-                Spead += 1.4f;
+                Spead = MinSpead;
             }
-            else
+
+            if (Input.GetKey(Touch) || Input.GetKey(Touch2))
             {
-                if (Spead >= 20)
+                if (LastPosition.y > this.transform.position.y)
                 {
-                    Spead -= 5f;
-                    return;
+                    Spead += 1.4f;
                 }
+                else
+                {
+                    if (Spead >= 20)
+                    {
+                        Spead -= 5f;
+                        return;
+                    }
+                    if (Spead - 0.4f >= MinSpead)
+                    {
+                        Spead -= 0.4f;
+                    }
+                }
+                return;
+            }
+            if (LastPosition.y < this.transform.position.y)
+            {
                 if (Spead - 0.4f >= MinSpead)
                 {
                     Spead -= 0.4f;
                 }
+                return;
             }
-            return;
         }
-        if (LastPosition.y < this.transform.position.y)
-        {
-            if (Spead - 0.4f >= MinSpead)
-            {
-                Spead -= 0.4f;
-            }
-            return;
-        }
-
 
     }
 
@@ -121,9 +124,9 @@ public class DolphinScript : MonoBehaviour
     }
     void Teleport()
     {//-334.31
-        if (this.transform.position.x >= 231.5f)
+        if (this.transform.position.x >= 2500+231.5f)
         {
-            this.transform.position = new Vector3(-344.5f, this.transform.position.y, this.transform.position.z);
+            this.transform.position = new Vector3(2500 - 344.5f, this.transform.position.y, this.transform.position.z);
             GenerateCookies();
         }
     }
@@ -141,30 +144,37 @@ public class DolphinScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Inited)
+        if (IsActive)
         {
-            Inited = true;
-            Init();
-        }
-        Teleport();
-        CheckRotation();
-        if (Input.GetKey(Touch) || Input.GetKey(Touch2))
-        {
-            MoveDown();
+            if (!Inited)
+            {
+                Inited = true;
+                Init();
+            }
+            Teleport();
+            CheckRotation();
+            if (Input.GetKey(Touch) || Input.GetKey(Touch2))
+            {
+                MoveDown();
+            }
+            else
+            {
+                if (LastPosition.y < this.transform.position.y && Mathf.Abs(this.transform.rotation.z - 0.08f) <= 0.3)
+                {
+                    this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z - 0.08f, this.transform.rotation.w);
+                }
+
+                //this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z - 0.1f, this.transform.rotation.w);
+                CurrentGravity = StandartGravity;
+            }
+            GetComponent<Rigidbody2D>().gravityScale = CurrentGravity;
+
+            LastPosition = this.transform.position;
         }
         else
         {
-            if (LastPosition.y < this.transform.position.y && Mathf.Abs(this.transform.rotation.z - 0.08f) <= 0.3)
-            {
-                this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z - 0.08f, this.transform.rotation.w);
-            }
-
-            //this.transform.rotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z - 0.1f, this.transform.rotation.w);
-            CurrentGravity = StandartGravity;
+            this.transform.position = new Vector3(2500 -336.6032f, 6.725888f, -1.7f);
+            GenerateCookies();
         }
-        GetComponent<Rigidbody2D>().gravityScale = CurrentGravity;
-
-        LastPosition = this.transform.position;
-
     }
 }

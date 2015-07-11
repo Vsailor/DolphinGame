@@ -2,15 +2,30 @@
 using System.Collections;
 
 public class StartScreenScript : MonoBehaviour {
+    public bool IsActive = false;
     void OnMouseDown()
     {
-        Application.LoadLevel("Play");
+        if (IsActive)
+        {
+            IsActive = false;
+            GameObject.Find("Dolphin").GetComponent<DolphinScript>().IsActive = true;
+            GameObject.Find("Main Camera").GetComponent<CameraScript>().IsActive = true;
+            GameObject.Find("Main Camera").GetComponent<AudioSource>().mute = false;
+            GameObject.Find("Main Camera").GetComponent<AudioSource>().Play();
+        }
     }
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (IsActive)
         {
-            Application.LoadLevel("Play");
+            if (Input.GetKey(KeyCode.Space))
+            {
+                GameObject.Find("Dolphin").GetComponent<DolphinScript>().IsActive = true;
+                GameObject.Find("Main Camera").GetComponent<CameraScript>().IsActive = true;
+                GameObject.Find("Main Camera").GetComponent<MainCameraScript>().IsActive = false;
+                GameObject.Find("Main Camera").GetComponent<AudioSource>().mute = false;
+                GameObject.Find("Main Camera").GetComponent<AudioSource>().Play();
+            }
         }
     }
 }

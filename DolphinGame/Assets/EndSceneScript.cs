@@ -4,8 +4,9 @@ using System.Collections;
 public class EndSceneScript : MonoBehaviour {
     public GameObject YourScore;
     public GameObject HighestScore;
+    public bool IsActive = false;
 	// Use this for initialization
-	void Start () {
+	void ReadScores() {
         var score = System.IO.File.ReadAllText(Application.persistentDataPath + @"\Score");
         YourScore.GetComponent<TextMesh>().text = "Your score: " + score;
         if (System.IO.File.Exists(Application.persistentDataPath + @"\MaxScore"))
@@ -27,9 +28,20 @@ public class EndSceneScript : MonoBehaviour {
             HighestScore.GetComponent<TextMesh>().text = "Highest score: " + score;
         }
 	}
-	
+    bool Done = false;
 	// Update is called once per frame
 	void Update () {
-	
+        if (IsActive)
+        {
+            if (!Done)
+            {
+                Done = true;
+                ReadScores();
+            }
+        }
+        else
+        {
+            Done = false;
+        }
 	}
 }

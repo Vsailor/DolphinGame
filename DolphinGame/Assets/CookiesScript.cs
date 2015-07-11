@@ -30,9 +30,12 @@ public class CookiesScript : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        AnimatorComponent.Play(TriggerAnimation);
-        var component = MainCamera.GetComponent<CameraScript>();
-        component.ScoreAmount += 5;
-        component.CoinSoundPlay();
+        if (GameObject.Find("Dolphin").GetComponent<DolphinScript>().IsActive)
+        {
+            AnimatorComponent.Play(TriggerAnimation);
+            var component = MainCamera.GetComponent<CameraScript>();
+            component.ScoreAmount += 5;
+            component.CoinSoundPlay();
+        }
     }
 }

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CameraScript : MonoBehaviour
 {
+    public bool IsActive = false;
+    public GameObject PlayPanel;
     public int ScoreAmount = 0;
     public GameObject Dolphin;
     public GameObject ScoreDisplay;
@@ -12,9 +14,10 @@ public class CameraScript : MonoBehaviour
     public GameObject Score;
     public GameObject Swoosh;
     public GameObject CoinSound;
-    private int MaxTime = 120;
+    private int MaxTime;
     public void CoinSoundPlay()
     {
+
         CoinSound.GetComponent<AudioSource>().Play();
     }
     void MoveDisplays()
@@ -70,32 +73,60 @@ Swoosh.transform.localScale.z);
         Swoosh.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, 50, 2));
     }
     bool LargeJump = false;
+    bool Activated = false;
     void Update()
     {
-        this.transform.position = new Vector3(Dolphin.transform.position.x + 4, this.transform.position.y, this.transform.position.z);
-        MoveDisplays();
-
-        if (!LargeJump && Camera.main.orthographicSize >= 15)
+        if (IsActive)
         {
-            ScoreAmount += 100;
-            LargeJump = true;
-            Swoosh.SetActive(true);
+            if (!Activated)
+            {
+                MaxTime = (int)(Time.timeSinceLevelLoad + 120);
+                Activated = true;
+            }
+            PlayPanel.active = true;
+            this.transform.position = new Vector3(Dolphin.transform.position.x + 4, this.transform.position.y, this.transform.position.z);
+            MoveDisplays();
+
+
+            if (!LargeJump && Camera.main.orthographicSize >= 15)
+            {
+                ScoreAmount += 100;
+                LargeJump = true;
+                Swoosh.SetActive(true);
+            }
+            else
+            {
+                if (Camera.main.orthographicSize < 15)
+                {
+                    LargeJump = false;
+                    Swoosh.SetActive(false);
+                }
+            }
+            if (Timer.GetComponent<TextMesh>().text == "0")
+            {
+                System.IO.File.WriteAllText(Application.persistentDataPath + @"\Score", ScoreAmount.ToString());
+                GameObject.Find("Dolphin").GetComponent<DolphinScript>().IsActive = false;
+                GameObject.Find("Main Camera").GetComponent<CameraScript>().IsActive = false;
+                GameObject.Find("Main Camera").GetComponent<AudioSource>().mute = true;
+                IsActive = false;
+                GameObject.Find("Main Camera").GetComponent<EndSceneScript>().IsActive = true;
+                Camera.main.orthographicSize = 7.6f;
+                this.transform.position = new Vector3(5000f, 0f, -10f);
+            }
+            Timer.GetComponent<TextMesh>().text = (MaxTime - (int)(Time.timeSinceLevelLoad)).ToString();
+            Score.GetComponent<TextMesh>().text = ScoreAmount.ToString();
         }
         else
         {
-            if (Camera.main.orthographicSize < 15)
-            {
-                LargeJump = false;
-                Swoosh.SetActive(false);
-            }
+            Timer.GetComponent<TextMesh>().text = "120";
+            ScoreDisplay.transform.localScale = new Vector3(2f, 2f, 1f);
+            TimeDisplay.transform.localScale = new Vector3(2f, 2f, 1f);
+            QuitButton.transform.localScale = new Vector3(2f, 2f, 1f);
+            Swoosh.transform.localScale = new Vector3(2f, 2f, 1f);
+            GameObject.Find("Dolphin").GetComponent<DolphinScript>().Spead = GameObject.Find("Dolphin").GetComponent<DolphinScript>().MinSpead;
+            ScoreAmount = 0;
+            PlayPanel.active = false;
+            Activated = false;
         }
-        if (Timer.GetComponent<TextMesh>().text == "0")
-        {
-            System.IO.File.WriteAllText(Application.persistentDataPath + @"\Score", ScoreAmount.ToString());
-            Application.LoadLevel("EndScreen");
-        }
-        Timer.GetComponent<TextMesh>().text = (MaxTime - (int)(Time.timeSinceLevelLoad)).ToString();
-        Score.GetComponent<TextMesh>().text = ScoreAmount.ToString();
-
     }
 }
