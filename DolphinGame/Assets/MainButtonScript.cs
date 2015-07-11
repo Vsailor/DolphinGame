@@ -17,6 +17,7 @@ public class MainButtonScript : MonoBehaviour
             GameObject.Find("Main Camera").GetComponent<CameraScript>().IsActive = true;
             GameObject.Find("Main Camera").GetComponent<AudioSource>().mute = false;
             GameObject.Find("Main Camera").GetComponent<AudioSource>().Play();
+            GameObject.Find("Main Camera").GetComponent<EndSceneScript>().IsActive = false;
         }
         if (this.name == "WriteAReviewButton")
         {
